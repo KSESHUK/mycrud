@@ -1,0 +1,58 @@
+<form #Employeform="ngForm" (ngSubmit)="save(Employeform)">
+    <div  class="border border-secondary">
+        <div class="panel-heading">
+            <h3  class="d-block p-2 bg-primary text-white">Create Employee</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group" class="container"
+             [class.has-error]="fullnamecontrol.invalid && fullnamecontrol.touched"
+             [class.has-success]="fullnamecontrol.valid">
+                <label for="fullname" class="control-label">Full Name</label>
+                <input required type="text" class="form-control" name="fullname" [(ngModel)]="fullname" id="fullname"
+                #fullnamecontrol="ngModel">
+                <span class="help-block" *ngIf="fullnamecontrol.invalid && fullnamecontrol.touched">Fullname is required</span>
+            </div>
+            <div class="form-group" class="container" 
+            [class.has-error]="emailcontrol.invalid && emailcontrol.touched">
+                <label for="email" class="control-label">Email</label>
+                <input required type="email"  class="form-control" id="email" name="email" [(ngModel)]="email"
+                #emailcontrol="ngModel">
+                <span class="help-block" *ngIf="emailcontrol.invalid && emailcontrol.touched">Email is required</span>
+            </div>
+            <div class="form-group" class="container">
+                <label for="phno" >phone</label>
+                <input type="phonenumber" class="form-control" id="phonenumber" 
+                name="phonenumber" [(ngModel)]="phonenumber">
+            </div>
+            <div class="form-group" class="container">
+                <label>Gender</label>
+                <div class="form-control">
+                    <label class="radio-inline">
+                    <input type="radio" value="male" name="gender" [(ngModel)]="gender">Male
+                    </label>
+                    <label class="radio-inline">
+                    <input type="radio" value="female" name="gender" [(ngModel)]="gender">Female
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" class="container">
+                <div class="form-control">
+                    <label class="checkbox-inline">
+                    <input type="checkbox"  name="isActive" [(ngModel)]="checkbox">Is Active
+                    </label>
+                </div>
+            </div>
+            <div class="form-group" class="container">
+                <label for="date" >Dateofbirth</label>
+                <input type="text" class="form-control" id="date" 
+                name="date" [(ngModel)]="date"  bsDatepicker [bsConfig]="Dateconfiger">
+            </div>
+        </div>
+        <div  class="panel-footer">
+            <button type="submit" class="btn btn-primary"[disabled]="Employeform.invalid">Save</button>
+        </div>
+    </div>
+    </form>
+    Created My Form:  {{Employeform.value | json}}
+
+   
